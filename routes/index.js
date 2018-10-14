@@ -5,7 +5,7 @@ const users = [
   {
     1: {
       name: 'marquitos',
-      occ: 'noob-slayer',
+      occ: 'is a noob, does not slay',
     }
   }
 ]
