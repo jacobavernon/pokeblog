@@ -1,0 +1,16 @@
+html 
+  head
+    link(rel='stylesheet', href='/stylesheets/users.css')
+  body 
+.container  
+  h1.title welcome to 
+    img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
+//-   h3 This pokemon id is  #{id} and its name is #{pokemon.toUpperCase()}
+//-   h4 #{pokemon} is a #{type} type pokemon
+//-   img.pokemonID(src=img)
+
+//- h1 #{pokemon}
+
+h2 Here is some pokemon
+  each poke, index in pokemon
+    p #{index+1} #{poke.name}

@@ -1,0 +1,15 @@
+extends layout 
+block content 
+  img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
+  label Please search for any type of pokemon
+  input(action='/search' method='post')
+  button(type='submit') Search
+  h1= pokemon.name
+    img(src=pokemon.sprites.front_default)
+  
+  ul 
+    each position in pokemon.types
+      li= position.type.name
+  p #{pokemon.name} weighs a total of #{pokemon.weight} LBS. and stands #{pokemon.height} Feet tall.
+     
+      
