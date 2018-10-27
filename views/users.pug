@@ -5,12 +5,13 @@ html
 .container  
   h1.title welcome to 
     img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
-//-   h3 This pokemon id is  #{id} and its name is #{pokemon.toUpperCase()}
-//-   h4 #{pokemon} is a #{type} type pokemon
-//-   img.pokemonID(src=img)
-
-//- h1 #{pokemon}
+  form(action='/users:id' method='GET')
+    label Please search for any type of pokemon
+    input(type='text' name='search')
+    button(type='submit' value='Search') Search
 
 h2 Here is some pokemon
   each poke, index in pokemon
     p #{index+1} #{poke.name}
+     
+      
