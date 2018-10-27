@@ -62,11 +62,11 @@ const indigoLeague = {
   }
 }
 
+
 router.get('/', (req, res, next) => {
   axios.get('https://pokeapi.co/api/v2/pokemon/')
     .then((response) => {
       const { results } = response.data
-
       res.render('users', { pokemon: results.slice(0, 151) })      
   })
   
@@ -78,6 +78,7 @@ router.get('/', (req, res, next) => {
 //  GET users listing. 
  router.get('/:id', (req, res, next) => {
    axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
+   
      .then((response) => {
        const pokemon = {
         name: response.data.name,
@@ -86,23 +87,24 @@ router.get('/', (req, res, next) => {
         weight: response.data.weight,
         height: response.data.height,
        }
-
-       console.log('types: ', response.data)
-      
-
        res.render('pokemon', { pokemon })
-     })
-
+        if(req.query.search) {
+          const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+          pokemon.name.find({name: regex}, function (err, pokemon) {
+        if(err) {
+         console.log('This is the error' + err)
+        } else {
+          res.render('pokemon', {pokemon: pokemon})
+        }
+          })
+      }
+    })
      .catch((err) => {
        console.log(err)
      })
-
-  router.get('/search:/pokemon', (res, req, next) => {
-    const search = req.params.pokemon
-      
-  })   
- })
-
-
+  })
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};  
 
 module.exports = router;
