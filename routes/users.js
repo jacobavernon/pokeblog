@@ -69,16 +69,16 @@ router.get('/', (req, res, next) => {
       const { results } = response.data
       res.render('users', { pokemon: results.slice(0, 151) })      
   })
-  
   .catch((err) => {
     console.log(err)
-    })
+    next()
   })
+})
 
 //  GET users listing. 
  router.get('/:id', (req, res, next) => {
-   axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
-   
+   axios
+     .get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
      .then((response) => {
        const pokemon = {
         name: response.data.name,
@@ -87,24 +87,36 @@ router.get('/', (req, res, next) => {
         weight: response.data.weight,
         height: response.data.height,
        }
+
        res.render('pokemon', { pokemon })
-        if(req.query.search) {
-          const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-          pokemon.name.find({name: regex}, function (err, pokemon) {
-        if(err) {
-         console.log('This is the error' + err)
-        } else {
-          res.render('pokemon', {pokemon: pokemon})
-        }
-          })
-      }
     })
-     .catch((err) => {
-       console.log(err)
-     })
+    .catch((err) => {
+      console.log(err)
+      next();
+    })
   })
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};  
+
+router.get('/search/', (req, res, next) => {
+  console.log('SEARCH ROUTE HIT!')
+  console.log('QUERY: ', req.query.identifier)
+
+  axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${req.query.identifier}`)
+      .then((response) => {
+        const pokemon = {
+          name: response.data.name,
+          sprites: response.data.sprites,
+          types: response.data.types,
+          weight: response.data.weight,
+          height: response.data.height,
+       }
+
+       res.render('pokemon', { pokemon })
+    })
+    .catch((err) => {
+      console.log(err)
+      next();
+    })
+})
 
 module.exports = router;

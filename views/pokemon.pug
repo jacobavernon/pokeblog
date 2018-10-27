@@ -1,10 +1,12 @@
 extends layout 
 block content 
   img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
-  form(action='/users/:id' method='GET')
-    label Please search for any type of pokemon
-    input(type='text' name='search')
-    input(type='submit' value='search') 
+
+  form(action=`/users/search/` method='GET')
+    label(for='identifier') Please search for any type of pokemon
+    input#identifier(type='text' name='identifier' placeholder='pokemon id / name')
+    input(type='submit' value='Search')
+
   h1= pokemon.name
     img(src=pokemon.sprites.front_default)
   
