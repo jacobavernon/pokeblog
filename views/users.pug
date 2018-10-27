@@ -1,17 +1,15 @@
-html 
-  head
-    link(rel='stylesheet', href='/stylesheets/users.css')
-  body 
-.container  
-  h1.title welcome to 
-    img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
-  form(action='/users/search/' method='GET')
-    label Please search for any type of pokemon
-    input(type='text' name='identifier')
-    input(type='submit' value='Search')
+extends layout
+include mixins/searchPokemon.pug
 
-h2 Here is some pokemon
-  each poke, index in pokemon
-    p #{index+1} #{poke.name}
+block content
+  .container  
+    h1.title welcome to 
+      img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
+    
+    +searchPokemon()
+
+    h2 Here is some pokemon
+      each poke, index in pokemon
+        p #{index+1} #{poke.name}
      
       

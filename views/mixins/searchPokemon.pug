@@ -1,0 +1,5 @@
+mixin searchPokemon
+	form(action=`/users/search/` method='GET')
+	label(for='identifier') Please search for any type of pokemon
+	input#identifier(type='text' name='identifier' placeholder='pokemon id / name')
+	input(type='submit' value='Search')
