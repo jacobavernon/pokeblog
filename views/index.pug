@@ -2,9 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to <img src=https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622>#{title} datte-bayo!
-  <img src=https://nerdist.com/wp-content/uploads/2017/12/bulbasaur-charmander-squirtle-pokemon.jpg>
-  p Poke-post! 
-  <input id="blog" type="text" /> 
-  <input id="submits" type="submit" /> 
-  <p id="blogPrinter"></p>
+  p Welcome to 
+    img(src="https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622")
+    #{title} datte-bayo!
+    img(src="https://nerdist.com/wp-content/uploads/2017/12/bulbasaur-charmander-squirtle-pokemon.jpg")
+  label Poke-post!:
+    input#blog(type="text")
+    button#submits(type="submit") Submit
+  
+    
+  
+  p#blogprinter 
+ 
+  img(src="https://52f4e29a8321344e30ae-0f55c9129972ac85d6b1f4e703468e6b.ssl.cf2.rackcdn.com/products/pictures/149710.jpg")
+
