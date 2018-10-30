@@ -1,10 +1,15 @@
-html 
-  head
-    link(rel='stylesheet', href='/stylesheets/users.css')
-  body  
-h1 welcome to 
-  img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
-h3 This pokemon id is  #{id} and its name is #{pokemon}
-h4 #{pokemon} is a #{type} type pokemon
-img(src=img)
+extends layout
+include mixins/searchPokemon.pug
 
+block content
+  .container  
+    h1.title welcome to 
+      img(src='https://vignette.wikia.nocookie.net/nonsensopedia/images/1/17/PoK%C3%A9MoN.jpg/revision/latest?cb=20111109211622')
+    
+    +searchPokemon()
+
+    h2 Here is some pokemon
+      each poke, index in pokemon
+        p #{index+1} #{poke.name}
+     
+      

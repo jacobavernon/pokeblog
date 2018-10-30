@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const axios = require('axios');
 
 
 const stuff = {
@@ -61,21 +62,61 @@ const indigoLeague = {
   }
 }
 
-/* GET users listing. */
-router.get('/:id', (req, res, next) => {
-  console.log(indigoLeague[req.params.id].img)
-  res.render('users', 
-    {
-      id: req.params.id,
-      pokemon: indigoLeague[req.params.id].pokemon,
-      type: indigoLeague[req.params.id].type,
-      img: indigoLeague[req.params.id].img
-    }
-  )
-});
 
-router.get('/:id', (req, res) => {
-  res.sendfile(indigoLeague[req.params.id].img)
-});
+router.get('/', (req, res, next) => {
+  axios.get('https://pokeapi.co/api/v2/pokemon/')
+    .then((response) => {
+      const { results } = response.data
+      res.render('users', { pokemon: results.slice(0, 151) })      
+  })
+  .catch((err) => {
+    console.log(err)
+    next()
+  })
+})
+
+//  GET users listing. 
+ router.get('/:id', (req, res, next) => {
+   axios
+     .get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
+     .then((response) => {
+       const pokemon = {
+        name: response.data.name,
+        sprites: response.data.sprites,
+        types: response.data.types,
+        weight: response.data.weight,
+        height: response.data.height,
+       }
+
+       res.render('pokemon', { pokemon })
+    })
+    .catch((err) => {
+      console.log(err)
+      next();
+    })
+  })
+
+router.get('/search/', (req, res, next) => {
+  console.log('SEARCH ROUTE HIT!')
+  console.log('QUERY: ', req.query.identifier)
+
+  axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${req.query.identifier}`)
+      .then((response) => {
+        const pokemon = {
+          name: response.data.name,
+          sprites: response.data.sprites,
+          types: response.data.types,
+          weight: response.data.weight,
+          height: response.data.height,
+       }
+
+       res.render('pokemon', { pokemon })
+    })
+    .catch((err) => {
+      console.log(err)
+      next();
+    })
+})
 
 module.exports = router;
