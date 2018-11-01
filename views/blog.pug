@@ -1,0 +1,9 @@
+extends layout
+include mixins/searchPokemon.pug
+block content
+  form(action='/blog/posts' method='post')
+    label(for="pokeAuthor") Who is writing this?
+    input.pokeAuthor(type='text' name='author' placeholder='Type your name...')
+    br
+    input.pokeBody(type='text' name='post' placeholder='Tell us about your poke-adventures')
+    input.pokeSubmit(type='submit' value='Submit')

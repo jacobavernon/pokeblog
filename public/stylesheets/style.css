@@ -59,3 +59,8 @@ nav a:hover {
   margin: 0 auto;
   max-width: 960px;
 }
+
+.pokeBody {
+  min-width: 250px;
+  min-height: 120px;
+}

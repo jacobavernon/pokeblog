@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 const axios = require('axios');
 
+//All Pokemon Page
 router.get('/', (req, res, next) => {
   axios.get('https://pokeapi.co/api/v2/pokemon/')
     .then((response) => {
-      console.log(response.data)
       const { results } = response.data
       res.render('allPokemon', { pokemon: results.slice(0, 151) })      
   })
@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
   })
 })
 
-//  GET users listing. 
+//  Get indivual pokemon from API 
  router.get('/:id', (req, res, next) => {
    axios
      .get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
@@ -36,8 +36,8 @@ router.get('/', (req, res, next) => {
     })
   })
 
+// This is the search feature  
 router.get('/search/', (req, res, next) => {
-  console.log('QUERY: ', req.query.pokemon)
 
   axios
       .get(`https://pokeapi.co/api/v2/pokemon/${req.query.pokemon}`)
@@ -57,5 +57,4 @@ router.get('/search/', (req, res, next) => {
       next();
     })
 })
-
 module.exports = router;
