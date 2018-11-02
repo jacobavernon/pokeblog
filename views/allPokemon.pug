@@ -10,6 +10,7 @@ block content
 
     h2 Here is some pokemon
       each poke, index in pokemon
-        p #{index+1} #{poke.name}
+        p #{index+1} 
+          a(href='/pokemon/' + poke.name) #{poke.name}
      
       

@@ -7,7 +7,9 @@ router.get('/', (req, res, next) => {
   axios.get('https://pokeapi.co/api/v2/pokemon/')
     .then((response) => {
       const { results } = response.data
-      res.render('allPokemon', { pokemon: results.slice(0, 151) })      
+      res.render('allPokemon', { 
+        pokemon: results.slice(0, 151)
+      })      
   })
   .catch((err) => {
     console.log(err)
