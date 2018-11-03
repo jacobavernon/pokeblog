@@ -64,3 +64,32 @@ nav a:hover {
   min-width: 250px;
   min-height: 120px;
 }
+
+footer a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+footer {
+  background-color: #7db9db;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; 
+  min-height: 5vh;
+  flex-direction: column;
+  flex: 1;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; 
+  padding: 0;
+  margin: 0;
+}
+
+footer li {
+  margin: 0 15px;
+  list-style: none;
+}
