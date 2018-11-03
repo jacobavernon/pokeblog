@@ -82,6 +82,62 @@ nav a:hover {
 }
 
 
+/* ======= FORM =========*/
+form {
+  padding: 2rem;
+  background-color: papayawhip;
+  color: coral;
+  border: solid 5px coral;
+}
+
+form h3 {
+  margin-top: 0;
+  font-size: 36px;
+  color: coral;
+  text-align: center;
+}
+
+form label {
+  display: flex;
+  margin-bottom: 2rem;
+  font-size: 24px;
+  color: lightcoral;
+}
+
+form label span {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+form input {
+  flex: 1.5;
+  align-self: flex-start;
+  margin-left: 1rem;
+  background: white;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px #d4af73;
+  padding: 0.3em 0.5em 0.3em 0.3em;
+  font-size: 24px;
+}
+
+form input[type=submit] {
+  margin-left: 0;
+  border: none;
+  min-width: 250px;
+  background: indianred;
+  color: white;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: all 0.35s;
+}
+
+form input[type=submit]:hover {
+  background: coral;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 14px #d4af73;
+}
+
 /* ======= FOOTER =========*/
 
 footer a {

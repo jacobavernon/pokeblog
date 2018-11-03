@@ -2,9 +2,14 @@ extends layout
 include mixins/searchPokemon.pug
 block content
   form(action='/blog/posts' method='post')
-    label(for="pokeAuthor") What's your name Poke-Trainer?
-    input.pokeAuthor(type='text' name='author' placeholder='Type your name...')
-    br
-    label(for='pokeBody') Tell us about your adventures!
-    input.pokeBody(type='text' name='post' placeholder='Tell us about your poke-adventures')
+    h3 Become a PokeTrainer
+
+    label(for="pokeAuthor")
+      span What's your name Poke-Trainer?
+      input.pokeAuthor(type='text' name='author' placeholder='Type your name...')
+
+    label(for='pokeBody')
+      span Tell us about your adventures!
+      input.pokeBody(type='text' name='post' placeholder='Tell us about your poke-adventures')
+
     input.pokeSubmit(type='submit' value='Submit')
