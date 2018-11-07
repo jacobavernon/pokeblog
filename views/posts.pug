@@ -2,6 +2,7 @@ extends layout
 include mixins/searchPokemon.pug
 block content
 
-  p This pokemon trainer is #{author}
-  p Post: #{body}
+  .post
+    h2.post-author Poke-Trainer:   #{author}
+    p.post-body Post: #{body}
     
