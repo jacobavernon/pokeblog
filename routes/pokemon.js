@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
       })      
   })
   .catch((err) => {
-    console.log(err)
     next()
   })
 })
@@ -22,7 +21,6 @@ router.get('/', (req, res, next) => {
    axios
      .get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
      .then((response) => {
-       console.log(response.data)
        const pokemon = {
         name: response.data.name,
         sprites: response.data.sprites,
@@ -30,12 +28,12 @@ router.get('/', (req, res, next) => {
         weight: response.data.weight,
         height: response.data.height,
         abilities: response.data.abilities,
-        moves: response.data.moves
+        moves: response.data.moves,
+        search: req.query.pokemon
        }
-       res.render('individualPokemon', { pokemon })
+       res.render('individualPokemon', { pokemon }) 
     })
     .catch((err) => {
-      console.log(err)
       next();
     })
   })
@@ -53,13 +51,16 @@ router.get('/search/', (req, res, next) => {
           weight: response.data.weight,
           height: response.data.height,
           abilities: response.data.abilities,
-          moves: response.data.moves
+          moves: response.data.moves,
+          search: req.query.pokemon
        }
+       res.render('individualPokemon', { 
+         pokemon: pokemon,
 
-       res.render('individualPokemon', { pokemon })
+       })
+         console.log(req.query.pokemon)
     })
     .catch((err) => {
-      console.log(err)
       next();
     })
 })
