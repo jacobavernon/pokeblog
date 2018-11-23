@@ -192,3 +192,18 @@ footer li {
   border: solid 2px #60869c;
   padding: 15px;
 }
+
+/*GARY OAK TRAINERS PAGE*/
+.garyText {  
+  text-align: center;
+  font-family: "spicy rice";
+  font-size: 25px; 
+}
+
+.garyImage {
+  align-self: center;
+  height: 500px;
+  width: 500px;
+  display: block; /*Centers the Image*/
+  margin: 0 auto; /*Centers the Image*/
+}

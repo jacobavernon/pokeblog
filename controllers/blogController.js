@@ -1,11 +1,11 @@
 const pokeBlogs = {};
 
 exports.getIndex = function(req, res) {
-  res.render("blog");
+  res.render("blog", { title: "Datte-Bayo!" }); //added title text -Jacob
 };
 
 exports.getPost = function(req, res, next) {
-  // Does our pokeBlogs object contain the requested author?
+  // Do our pokeBlogs object contain the requested author?
   if (pokeBlogs[req.params.author]) {
     res.render("posts", {
       author: req.params.author,
