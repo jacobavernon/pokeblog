@@ -5,6 +5,8 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Spicy+Rice" rel="stylesheet")
   body
-    include partials/header.pug 
-    .content
-      block content
+    .prime
+      include partials/header.pug 
+      .main.content
+        block content
+      include partials/footer.pug  

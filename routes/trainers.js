@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
-var controllerIndex = require("../controllers/indexController");
+var trainersIndex = require("../controllers/trainersController");
 
 /* GET home page. */
-router.get("/", controllerIndex.index);
+router.get("/", trainersIndex.index);
 
 module.exports = router;

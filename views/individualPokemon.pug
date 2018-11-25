@@ -1,0 +1,23 @@
+extends layout 
+include mixins/searchPokemon.pug
+
+block content 
+
+  +searchPokemon()  
+
+  h1= pokemon.name
+    img(src=pokemon.sprites.front_default)
+  
+  ul 
+    each position in pokemon.types
+      li Type: #{position.type.name} 
+    br  
+    each position in pokemon.abilities
+      li Abilities: #{position.ability.name}  
+    br
+    each position in pokemon.moves
+      li Here is the poke-moves: #{position.move.name}
+
+      
+  p #{pokemon.name} weighs a wopping total of #{pokemon.weight} LBS. and stands #{pokemon.height} Feet tall.
+  
