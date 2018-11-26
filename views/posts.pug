@@ -3,6 +3,8 @@ include mixins/searchPokemon.pug
 block content
 
   .post
-    h2.post-author Poke-Trainer:   #{author}
-    p.post-body Post: #{body}
+    each post in posts
+      ul
+        li #{post.author}
+        li #{post.post}
     
