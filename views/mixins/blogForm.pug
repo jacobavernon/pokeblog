@@ -1,0 +1,13 @@
+mixin blogForm(blog = {} )
+  form(action=`/blog/posts/${blog._id || ''}` method='post')
+    h3 Become a PokeTrainer
+
+    label(for="author")
+      span What's your name Poke-Trainer?
+      input.pokeAuthor(type='text' name='author' placeholder='Type your name...' value=blog.author)
+
+    label(for='pokeBody')
+      span Tell us about your adventures!
+      input.pokeBody(type='text' name='post' placeholder='Tell us about your poke-adventures' value=blog.post)
+
+    input.pokeSubmit(type='submit' value='Submit')
