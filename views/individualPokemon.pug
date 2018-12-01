@@ -7,7 +7,7 @@ block content
 
   h1= pokemon.name
     img(src=pokemon.sprites.front_default)
-  
+    
   ul 
     each position in pokemon.types
       li Type: #{position.type.name} 
@@ -16,8 +16,7 @@ block content
       li Abilities: #{position.ability.name}  
     br
     each position in pokemon.moves
-      li Here is the poke-moves: #{position.move.name}
-
-      
-  p #{pokemon.name} weighs a wopping total of #{pokemon.weight} LBS. and stands #{pokemon.height} Feet tall.
-  
+      if position.move.name.length <= 4
+        li Moves: #{position.move.name}
+        
+    p #{pokemon.name} weighs a total of #{pokemon.weight} LBS. and stands #{pokemon.height} Feet tall.
