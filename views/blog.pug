@@ -1,15 +1,6 @@
 extends layout
-include mixins/searchPokemon.pug
+include mixins/blogForm.pug
 block content
-  form(action='/blog/posts' method='post')
-    h3 Become a PokeTrainer
+  
+  +blogForm(blog)
 
-    label(for="author")
-      span What's your name Poke-Trainer?
-      input.pokeAuthor(type='text' name='author' placeholder='Type your name...')
-
-    label(for='pokeBody')
-      span Tell us about your adventures!
-      input.pokeBody(type='text' name='post' placeholder='Tell us about your poke-adventures')
-
-    input.pokeSubmit(type='submit' value='Submit')

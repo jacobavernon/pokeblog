@@ -1,10 +1,13 @@
 extends layout
 include mixins/searchPokemon.pug
 block content
-
+  pre= h.dump(locals)
   .post
     each post in posts
       ul
-        li #{post.author}
-        li #{post.post}
+        li Author: #{post.author}
+        li Post: #{post.post}
+          a(href=`/blog/posts/${post.id}`) 
+            input(type='button' value=`edit` name= 'edit')
+            
     

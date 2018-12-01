@@ -207,3 +207,33 @@ footer li {
   display: block; /*Centers the Image*/
   margin: 0 auto; /*Centers the Image*/
 }
+
+.blog-author {
+  border-top: 3px solid #e6ca5c;
+  list-style: none;
+}
+
+.blog-post {
+  list-style: none;
+}
+
+/* All Pokemon Styling */
+
+.all-pokemon-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1em);
+  grid-template-rows: repeat(3, 1em);
+}
+
+.a-pokemon {
+  grid-column: 1/3;
+  grid-row: 1;
+}
+
+.a-pokemon-links {
+  grid-column: 2/3;
+  grid-row: 1;
+}
+
+
+
