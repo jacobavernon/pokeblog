@@ -20,7 +20,6 @@ exports.createPost = async (req, res) => {
 exports.getPost = async (req, res) => {
   const posts = await Blog.find();
   res.render('posts', { 
-    title: 'Posts',
     posts
   })
 };

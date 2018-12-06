@@ -130,6 +130,7 @@ footer {
   min-height: 50px;
   justify-content: space-evenly;
   background-color: #002c46;
+  margin-top: 45px;
 }
 
 footer ul {
@@ -143,6 +144,10 @@ footer ul {
 footer li {
   margin: 0 15px;
   list-style: none;
+}
+
+footer a:hover {
+  color: #bb9306;
 }
 
 .logo {
@@ -189,10 +194,42 @@ footer li {
 /* Poke-Post */
 
 .post {
-  border: solid 2px #60869c;
+  border: solid 2px #516069;
   padding: 15px;
+  background-color: #c1e7ff;
+  border-radius: 4px;
+  color: #656461;
 }
 
+.post ul {
+  list-style: none;
+  border-top: solid 2px #ffffff;
+  padding: 10px 0px 5px 2px;
+}
+
+.post div {
+  padding: 5px;
+}
+
+.post button {
+  background-color: #ffca00;
+  float: right;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-top: -58px;
+}
+
+.post a {
+  color: black;
+  text-decoration: none;
+  float: right;
+  margin-top: -26px;
+  min-width: 62px;
+  background-color: #ffca00;
+  text-align: center;
+  border-radius: 6px;
+}
 /*GARY OAK TRAINERS PAGE*/
 .garyText {  
   text-align: center;
@@ -207,6 +244,8 @@ footer li {
   display: block; /*Centers the Image*/
   margin: 0 auto; /*Centers the Image*/
 }
+
+/* Blog Form styling */
 
 .blog-author {
   border-top: 3px solid #e6ca5c;
@@ -234,6 +273,3 @@ footer li {
   grid-column: 2/3;
   grid-row: 1;
 }
-
-
-

@@ -5,9 +5,10 @@ block content
     each post in posts
       ul
         li
-          div Author: #{post.author} 
-          div Post: #{post.post}
+          div <strong>Poke-Trainer:</strong> #{post.author} 
+          div <strong>Poke-Post:</strong> #{post.post}
           a(href=`posts/${post._id}`) Edit
+            
           form(action=`/blog/posts/delete/${post._id}` method='post')
             button(type='submit') Delete
             
