@@ -5,11 +5,15 @@ exports.getIndex = function(req, res) {
   res.render("blog", { title: "Datte-Bayo!" }); //added title text -Jacob
 };
 
+exports.deletePost = async (req, res) => {
+  await Blog.findOneAndDelete({ _id: req.params.id}, req.body
+  ).exec();
+  res.redirect('/blog/posts')
+};
 
 exports.createPost = async (req, res) => {
   const blog = await (new Blog(req.body)).save();
   await blog.save();
-  req.flash('success', 'you have successfully created this blog post')
   res.redirect('/blog/posts')
 };
 
@@ -22,8 +26,8 @@ exports.getPost = async (req, res) => {
 };
 
 exports.editPost = async (req, res) => {
-  const blog = await Blog.findOne({_id: req.params.id});
-  res.render('individualPost', { blog })
+  const blog = await Blog.findOne({_id: req.params.id });
+  res.render('blog', { blog })
 };
 
 exports.updatePost = async (req, res) => {
@@ -31,6 +35,5 @@ exports.updatePost = async (req, res) => {
     new: true,
     runValidators: true
   }).exec();
-  req.flash('success', 'you have successfully created this blog post')
   res.redirect(`/blog/posts`)
-}
+};

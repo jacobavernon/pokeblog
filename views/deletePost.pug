@@ -1,0 +1,6 @@
+extends layout
+block content
+  each post in posts
+    ul
+      li #{post.author}
+      li #{post.post}

@@ -12,7 +12,6 @@ var passport = require('passport');
 var errorHandlers = require('./handlers/errorHandlers');
 const helpers = require('./helpers');
 const promisify = require('es6-promisify');
-var flash = require('connect-flash');
 
 
 var indexRouter = require('./routes/index');
@@ -35,8 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
-app.use(session({ secret: '123' }));
 
 app.use('/', indexRouter);
 app.use('/pokemon', pokemonRouter);
@@ -62,25 +59,29 @@ app.use(session({
   blog: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-app.use((req, res, next) => {
-  res.locals.h = helpers;
-  res.locals.flashes = req.flash();
-  res.locals.user = req.user || null;
-  res.locals.currentPath = req.path;
-  next();
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 if (app.get('env') == 'development') {
   /* Development Error Handler - Prints stack trace */
   app.use(errorHandlers.developmentErrors);
 };
+app.use((req, res, next) => {
+  res.locals.h = helpers;
+});
 
 app.use((req, res, next) => {
   req.login = promisify(req.login, req);
   next();
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 

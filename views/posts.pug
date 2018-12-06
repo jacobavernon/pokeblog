@@ -1,13 +1,16 @@
 extends layout
 include mixins/searchPokemon.pug
 block content
-  pre= h.dump(locals)
   .post
     each post in posts
       ul
-        li Author: #{post.author}
-        li Post: #{post.post}
-          a(href=`/blog/posts/${post.id}`) 
-            input(type='button' value=`edit` name= 'edit')
+        li
+          div Author: #{post.author} 
+          div Post: #{post.post}
+          a(href=`posts/${post._id}`) Edit
+          form(action=`/blog/posts/delete/${post._id}` method='post')
+            button(type='submit') Delete
             
+       
+              
     

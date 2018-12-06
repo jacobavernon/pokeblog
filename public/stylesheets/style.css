@@ -60,33 +60,33 @@ nav a:hover {
 }
 
 /* ======= FORM =========*/
-form {
+.search-form {
   padding: 2rem;
   background-color: papayawhip;
   color: coral;
   border: solid 5px coral;
 }
 
-form h3 {
+.search-form h3 {
   margin-top: 0;
   font-size: 36px;
   color: coral;
   text-align: center;
 }
 
-form label {
+.search-form label {
   display: flex;
   margin-bottom: 2rem;
   font-size: 24px;
   color: lightcoral;
 }
 
-form label span {
+.search-form label span {
   flex: 1;
   margin-bottom: 1.5rem;
 }
 
-form input {
+.search-form input {
   flex: 1.5;
   align-self: flex-start;
   margin-left: 1rem;
@@ -98,7 +98,7 @@ form input {
   font-size: 24px;
 }
 
-form input[type=submit] {
+.search-form input[type=submit] {
   margin-left: 0;
   border: none;
   min-width: 250px;
@@ -109,7 +109,7 @@ form input[type=submit] {
   transition: all 0.35s;
 }
 
-form input[type=submit]:hover {
+.search-form input[type=submit]:hover {
   background: coral;
   transform: translateY(-3px);
   box-shadow: 0 5px 14px #d4af73;
