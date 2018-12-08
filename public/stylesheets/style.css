@@ -217,14 +217,14 @@ footer a:hover {
   cursor: pointer;
   font-size: 16px;
   border-radius: 6px;
-  margin-top: -58px;
+  margin-top: -26px;
 }
 
 .post a {
   color: black;
   text-decoration: none;
   float: right;
-  margin-top: -26px;
+  margin-top: -58px;
   min-width: 62px;
   background-color: #ffca00;
   text-align: center;
@@ -258,18 +258,78 @@ footer a:hover {
 
 /* All Pokemon Styling */
 
-.all-pokemon-container {
+.poke-container {
   display: grid;
-  grid-template-columns: repeat(3, 1em);
-  grid-template-rows: repeat(3, 1em);
+  grid-template-columns: repeat(3, 1fr);
+  background-color: papayawhip;
+  border: solid 4px #e44242;
+  border-radius: 6px;
+  padding-left: 4px;
 }
 
-.a-pokemon {
-  grid-column: 1/3;
-  grid-row: 1;
+.pokeH2 {
+  text-align: center;
+  text-decoration: underline;
 }
 
-.a-pokemon-links {
-  grid-column: 2/3;
-  grid-row: 1;
+.poke-container a {
+  text-decoration: none;
+  color: #e66767;
+}
+
+.poke-container a:hover {
+  color: #866c6c;
+}
+
+.pika-hat {
+  width: 128px;
+  height: 128px;
+  margin-left: 328px;
+}
+
+/* Individual pokemon styling */
+
+.individual-container {
+  display: grid;
+  background-color: #c1f1f1;
+  border: solid 4px #7a8e8e;
+  margin-top: 25px;
+  border-radius: 4px;
+}
+
+.individual-container li {
+  list-style: none;
+}
+
+.data-container {
+  padding-right: 26px;
+}
+
+.data-container li {
+  display: grid;
+  grid-template-columns: 1fr 450px; 
+  color: #795548;
+}
+
+.individual-h1 {
+  text-align: center;
+}
+
+.type {
+  background-color: #dafbfb;
+  border-radius: 4px;
+}
+
+.ability {
+  background-color: #dafbfb;
+  border-radius: 4px;
+}
+
+.moves {
+  background-color: #dafbfb;
+  border-radius: 4px;
+}
+
+.individual-p {
+  color: #795548;
 }
