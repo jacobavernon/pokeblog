@@ -59,3 +59,20 @@ exports.getIndividualPokemon = function (req, res, next) {
           next();
         })
     }
+
+exports.getPokemonEvolution = function (req, res, next) {
+  axios
+    .get(`https://pokeapi.co/api/v2/evolution-chain/${req.query.id}`)
+    .then((response) => {
+      const evolution = {
+        chain: response.data.chain,
+        // evoloves_to: response.data.chain.evolves_to.species,
+      }
+      res.render('individualPokemon', { evolution })
+      console.log(evolution)
+      console.log(req.query.id)
+    })
+    .catch((err) => {
+      next();
+    })
+}

@@ -11,4 +11,8 @@ router.get('/:id', pokemonController.getIndividualPokemon)
 
 // This is the search feature  
 router.get('/search/', pokemonController.getSearchPokemon)
+
+//Get Pokemon Evolution
+router.get('/:id', pokemonController.getPokemonEvolution)
+
 module.exports = router;
