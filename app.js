@@ -80,11 +80,6 @@ app.use('/pokemon', pokemonRouter);
 app.use('/blog', blogRouter);
 app.use('/trainers', trainersRouter);
 
-app.use((req, res, next) => {
-  req.login = promisify(req.login, req);
-  next();
-});
-
 // Passport Cofiguration
 require('./config/passport')(passport);
 // Passport middleware
