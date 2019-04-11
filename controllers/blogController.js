@@ -90,7 +90,7 @@ exports.login = (req, res) => {
 
 exports.postLogin = (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/blog/posts',
+    successRedirect: '/blog/posts', 
     failureRedirect: '/blog/login',
     failureFlash: true
   })(req, res, next);
@@ -99,14 +99,14 @@ exports.postLogin = (req, res, next) => {
 exports.register = (req, res, next) => {
   const name = req.body.name
   const email = req.body.email
-  const username = req.body.username
+  const trainer = req.body.trainer
   const password = req.body.password
   const confirmPassword = req.body.confirmPassword
 
   req.checkBody('name', 'Name is required.').notEmpty()
   req.checkBody('email', 'Email is required').notEmpty()
   req.checkBody('email', 'Email is not valid').isEmail()
-  req.checkBody('username', 'Username is required').notEmpty()
+  req.checkBody('trainer', 'trainer is required').notEmpty()
   req.checkBody('password', 'Password is required').notEmpty()
   req.checkBody('confirmPassword', 'Passwords do not match').equals(req.body.password)
 
@@ -120,7 +120,7 @@ exports.register = (req, res, next) => {
     let newUser = new User({
       name,
       email,
-      username,
+      trainer,
       password
     });
     bcrypt.genSalt(10, function (err, salt) {
