@@ -1,8 +1,17 @@
 extends layout
 include mixins/searchPokemon.pug
 block content
-
   .post
-    h2.post-author Poke-Trainer:   #{author}
-    p.post-body Post: #{body}
+    each post in posts
+      ul
+        li
+          div <strong>Poke-Trainer:</strong> #{post.author} 
+          div <strong>Poke-Post:</strong> #{post.post}
+          a(href=`posts/${post._id}`) Edit
+            
+          form(action=`/blog/posts/delete/${post._id}` method='post')
+            button(type='submit') Delete
+            
+       
+              
     

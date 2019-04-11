@@ -60,33 +60,33 @@ nav a:hover {
 }
 
 /* ======= FORM =========*/
-form {
+.search-form {
   padding: 2rem;
   background-color: papayawhip;
   color: coral;
   border: solid 5px coral;
 }
 
-form h3 {
+.search-form h3 {
   margin-top: 0;
   font-size: 36px;
   color: coral;
   text-align: center;
 }
 
-form label {
+.search-form label {
   display: flex;
   margin-bottom: 2rem;
   font-size: 24px;
   color: lightcoral;
 }
 
-form label span {
+.search-form label span {
   flex: 1;
   margin-bottom: 1.5rem;
 }
 
-form input {
+.search-form input {
   flex: 1.5;
   align-self: flex-start;
   margin-left: 1rem;
@@ -98,7 +98,7 @@ form input {
   font-size: 24px;
 }
 
-form input[type=submit] {
+.search-form input[type=submit] {
   margin-left: 0;
   border: none;
   min-width: 250px;
@@ -109,7 +109,7 @@ form input[type=submit] {
   transition: all 0.35s;
 }
 
-form input[type=submit]:hover {
+.search-form input[type=submit]:hover {
   background: coral;
   transform: translateY(-3px);
   box-shadow: 0 5px 14px #d4af73;
@@ -130,6 +130,7 @@ footer {
   min-height: 50px;
   justify-content: space-evenly;
   background-color: #002c46;
+  margin-top: 45px;
 }
 
 footer ul {
@@ -143,6 +144,10 @@ footer ul {
 footer li {
   margin: 0 15px;
   list-style: none;
+}
+
+footer a:hover {
+  color: #bb9306;
 }
 
 .logo {
@@ -189,10 +194,42 @@ footer li {
 /* Poke-Post */
 
 .post {
-  border: solid 2px #60869c;
+  border: solid 2px #516069;
   padding: 15px;
+  background-color: #c1e7ff;
+  border-radius: 4px;
+  color: #656461;
 }
 
+.post ul {
+  list-style: none;
+  border-top: solid 2px #ffffff;
+  padding: 10px 0px 5px 2px;
+}
+
+.post div {
+  padding: 5px;
+}
+
+.post button {
+  background-color: #ffca00;
+  float: right;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-top: -26px;
+}
+
+.post a {
+  color: black;
+  text-decoration: none;
+  float: right;
+  margin-top: -58px;
+  min-width: 62px;
+  background-color: #ffca00;
+  text-align: center;
+  border-radius: 6px;
+}
 /*GARY OAK TRAINERS PAGE*/
 .garyText {  
   text-align: center;
@@ -206,4 +243,93 @@ footer li {
   width: 500px;
   display: block; /*Centers the Image*/
   margin: 0 auto; /*Centers the Image*/
+}
+
+/* Blog Form styling */
+
+.blog-author {
+  border-top: 3px solid #e6ca5c;
+  list-style: none;
+}
+
+.blog-post {
+  list-style: none;
+}
+
+/* All Pokemon Styling */
+
+.poke-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: papayawhip;
+  border: solid 4px #e44242;
+  border-radius: 6px;
+  padding-left: 4px;
+}
+
+.pokeH2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.poke-container a {
+  text-decoration: none;
+  color: #e66767;
+}
+
+.poke-container a:hover {
+  color: #866c6c;
+}
+
+.pika-hat {
+  width: 128px;
+  height: 128px;
+  margin-left: 328px;
+}
+
+/* Individual pokemon styling */
+
+.individual-container {
+  display: grid;
+  background-color: #c1f1f1;
+  border: solid 4px #7a8e8e;
+  margin-top: 25px;
+  border-radius: 4px;
+}
+
+.individual-container li {
+  list-style: none;
+}
+
+.data-container {
+  padding-right: 26px;
+}
+
+.data-container li {
+  display: grid;
+  grid-template-columns: 1fr 450px; 
+  color: #795548;
+}
+
+.individual-h1 {
+  text-align: center;
+}
+
+.type {
+  background-color: #dafbfb;
+  border-radius: 4px;
+}
+
+.ability {
+  background-color: #dafbfb;
+  border-radius: 4px;
+}
+
+.moves {
+  background-color: #dafbfb;
+  border-radius: 4px;
+}
+
+.individual-p {
+  color: #795548;
 }

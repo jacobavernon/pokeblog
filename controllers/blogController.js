@@ -1,28 +1,38 @@
-const pokeBlogs = {};
+const mongoose = require('mongoose');
+const Blog = mongoose.model('Blog');
 
 exports.getIndex = function(req, res) {
   res.render("blog", { title: "Datte-Bayo!" }); //added title text -Jacob
 };
 
-exports.getPost = function(req, res, next) {
-  // Do our pokeBlogs object contain the requested author?
-  if (pokeBlogs[req.params.author]) {
-    res.render("posts", {
-      author: req.params.author,
-      body: pokeBlogs[req.params.author].post
-    });
-  } else {
-    next();
-  }
+exports.deletePost = async (req, res) => {
+  await Blog.findOneAndDelete({ _id: req.params.id}, req.body
+  ).exec();
+  res.redirect('/blog/posts')
 };
 
-exports.createPost = function(req, res) {
-  const { author, post } = req.body;
+exports.createPost = async (req, res) => {
+  const blog = await (new Blog(req.body)).save();
+  await blog.save();
+  res.redirect('/blog/posts')
+};
 
-  pokeBlogs[author] = { post };
+exports.getPost = async (req, res) => {
+  const posts = await Blog.find();
+  res.render('posts', { 
+    posts
+  })
+};
 
-  res.render("posts", {
-    author: req.body.author,
-    body: req.body.post
-  });
+exports.editPost = async (req, res) => {
+  const blog = await Blog.findOne({_id: req.params.id });
+  res.render('blog', { blog })
+};
+
+exports.updatePost = async (req, res) => {
+  const blog = await Blog.findOneAndUpdate({_id: req.params.id}, req.body, {
+    new: true,
+    runValidators: true
+  }).exec();
+  res.redirect(`/blog/posts`)
 };

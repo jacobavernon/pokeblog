@@ -8,8 +8,12 @@ block content
     
     +searchPokemon()
 
-    h2 Here are some pokemon
+    h2.pokeH2 Welcome to the Indigo League!
+    img.pika-img(src='/images/pika.jpg')
+    img.pika-hat(src='/images/pikahat.jpg')
+    p Can you name them all?
+    .poke-container
       each poke, index in pokemon
-        p #{index+1} 
+        p #{index+1}:  
           a(href='/pokemon/' + poke.name) #{poke.name}   
       
