@@ -2,16 +2,23 @@ extends layout
 include mixins/searchPokemon.pug
 block content
   .post
-    each post in posts
+    each post in posts.reverse()
       ul
         li
-          div <strong>Poke-Trainer:</strong> #{post.author} 
-          div <strong>Poke-Post:</strong> #{post.post}
-          a(href=`posts/${post._id}`) Edit
-            
-          form(action=`/blog/posts/delete/${post._id}` method='post')
-            button(type='submit') Delete
-            
-       
+            div <strong>Poke-Trainer:</strong> #{post.trainer} 
+            div <strong>Poke-Post|</strong> #{post.post}
+            a(href=`posts/${post._id}`) Edit
+
+
+            form(action=`/blog/posts/delete/${post._id}` method='post')
+              button.submit(type='submit') Delete
               
-    
+
+            img(src=`/uploads/${post.photo}`)
+            br
+
+            p.created <strong> Posted: </strong>
+              time(datetime=post.created)= h.moment(post.created).fromNow()   
+  script.
+    let confirmation = document.querySelector('.submit') 
+    if (confirmation !== null) { confirmation.addEventListener('click', function(e) { confirm('Are you sure you want to delete this post?')})} 

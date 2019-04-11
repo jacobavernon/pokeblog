@@ -1,0 +1,13 @@
+extends layout
+block content
+
+  form.login-form(action='/blog/login' method='POST')
+    h2.login-text Welcome to #{title}
+    label(for='username') 
+      span.login-form-span-email Enter your username
+      input#login-username(type='text' name='username' required placeholder='poke-trainer')
+    
+    label(for='password') 
+      span Enter your password
+      input.login-password(type='text' name='password' required placeholder='pickachu@pika.com')
+    input.login-submit(type='submit' value='submit')
