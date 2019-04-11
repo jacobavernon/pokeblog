@@ -1,6 +1,7 @@
 @media screen and(min-width: 200px) {
   .poke-image {
     width: 50px;
+    max-width: 1%;
   }
 }
 
