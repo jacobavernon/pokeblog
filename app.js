@@ -10,9 +10,12 @@ var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
 var errorHandlers = require('./handlers/errorHandlers');
-const helpers = require('./helpers');
-const promisify = require('es6-promisify');
-
+var promisify = require('es6-promisify');
+var flash = require('connect-flash');
+var expressValidator = require('express-validator'); //applies a bunch of validation methods to make sure users are signing up correctlynp
+var config = require('./config/database')
+var passport = require('passport');
+var helpers = require('./helpers');
 
 var indexRouter = require('./routes/index');
 var pokemonRouter = require('./routes/pokemon');
@@ -29,64 +32,63 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
+app.use(flash()); // express connect flash middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// express session middleware
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: true,
+  saveUninitialized: false,
+  blog: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+// Express validator middleware
+app.use(expressValidator({
+  errorFormatter: function (param, msg, value) {
+    var namespace = param.split('.')
+      , root = namespace.shift()
+      , formParam = root;
+
+    while (namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param: formParam,
+      msg: msg,
+      value: value
+    };
+  }
+}));
+
+app.use(function (req, res, next) {
+  res.locals.h = helpers
+  res.locals.flashes = req.flash();
+  res.locals.currentPath = req.path;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/pokemon', pokemonRouter);
 app.use('/blog', blogRouter);
 app.use('/trainers', trainersRouter);
 
-//app.listen(3000);
-// catch 404 and forward to error handler
-// If that above routes didnt work, we 404 them and forward to error handler
-app.use(errorHandlers.notFound);
-
-// One of our error handlers will see if these errors are just validation errors
-
-app.use(errorHandlers.notFound);
-
-
-app.use(session({
-  secret: process.env.SECRET,
-  key: process.env.KEY,
-  resave: false,
-  saveUninitialized: false,
-  useNewUrlParser: true,
-  blog: new MongoStore({ mongooseConnection: mongoose.connection })
-}));
-
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-if (app.get('env') == 'development') {
-  /* Development Error Handler - Prints stack trace */
-  app.use(errorHandlers.developmentErrors);
-};
-app.use((req, res, next) => {
-  res.locals.h = helpers;
-});
-
 app.use((req, res, next) => {
   req.login = promisify(req.login, req);
   next();
 });
 
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-app.use(errorHandlers.productionErrors);
+// Passport Cofiguration
+require('./config/passport')(passport);
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 module.exports = app;

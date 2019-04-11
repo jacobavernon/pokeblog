@@ -1,7 +1,6 @@
 mixin blogForm(blog = {} )
   form(action=`/blog/posts/${blog._id || ''}` method='post')
     h3 Become a PokeTrainer
-
     label(for="author")
       span What's your name Poke-Trainer?
       input.pokeAuthor(type='text' name='author' placeholder='Type your name...' value=blog.author)

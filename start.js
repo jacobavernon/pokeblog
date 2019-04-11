@@ -9,7 +9,9 @@ mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
 });
 
-require('./models/blog');
+require('./models/Blog');
+require('./models/User');
+
 
 // Start our app!
 const app = require('./app');

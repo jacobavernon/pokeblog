@@ -1,0 +1,16 @@
+extends layout
+block content
+
+  form.search-form(action="/blog/register" method='POST')
+    h3 #{title}
+    label(for='name') Name
+    input(type='text' name='name' required placeholder='Ash')
+    label(for='email') Email
+    input(type='text' name='email' required placeholder='ash@pika.com')
+    label(for='username') Username
+    input(type='text' name='username' required placeholder='Pokemon-trainer-69')
+    label(for='password') Password
+    input(type='password' name='password' required placeholder='iheartmisty')
+    label(for='confirm-password') Confirm Password
+    input(type='password' name='confirmPassword' required placeholder='iheartmisty')
+    button Submit
